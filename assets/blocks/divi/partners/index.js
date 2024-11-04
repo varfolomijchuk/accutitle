@@ -13,11 +13,12 @@ jQuery(function ($) {
                 selectHead = $('.select-block').find('.select-block--head .select-placeholder'),
                 inputText = $('.submit-block').find("input[type='text']"),
                 filterSubmit = $('#filter-submit'),
+                eventClick = $( window ).width() > 1024 ? 'click' : 'touchstart',
                 partnerName;
 
             // Checkbox block handler
             checkboxItems.each((id, el) => {
-                $(el).on('click', function () {
+                $(el).on(eventClick, function () {
                     $(this).find('.checkbox').toggleClass('checked');
 
                     // Clear previous values to avoid duplicates
@@ -68,13 +69,13 @@ jQuery(function ($) {
             })
 
             // Open select options
-            selectHead.on('click', function () {
+            selectHead.on(eventClick, function () {
                 $(this).parent().toggleClass('is-opened');
             });
 
             // Select block handler
             selectItems.each((id, el) => {
-                $(el).on('click', function () {
+                $(el).on(eventClick, function () {
                     if ($(this).find('.checkbox').data('value') === 'all') {
                         selectItems.find('.checkbox').removeClass('checked');
                         $(this).find('.checkbox').toggleClass('checked');
@@ -140,7 +141,7 @@ jQuery(function ($) {
             })
 
             // Submit button handler
-            filterSubmit.on('click', function (e) {
+            filterSubmit.on(eventClick, function (e) {
                 e.preventDefault();
 
                 // Clear previous values to avoid duplicates
