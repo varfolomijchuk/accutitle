@@ -90,7 +90,6 @@ function partners_filter() {
         ];
     }
 
-    var_dump('test');
 
     if (!empty($payment_type_terms_slugs)) {
         $query_args['tax_query'][] = [

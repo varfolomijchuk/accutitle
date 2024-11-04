@@ -19,6 +19,51 @@ jQuery(function ($) {
             checkboxItems.each((id, el) => {
                 $(el).on('click', function () {
                     $(this).find('.checkbox').toggleClass('checked');
+
+                    // Clear previous values to avoid duplicates
+                    ajaxData.partnerType = [];
+                    ajaxData.paymentType = [];
+
+                    if (partnerName) {
+                        ajaxData.partnerName = partnerName;
+                    }
+
+                    checkboxItems.each(function (is, el) {
+                        if ($(el).children('.checkbox').hasClass('checked')) {
+                            const value = $(el).children('.checkbox').data('value');
+                            if (!ajaxData.partnerType.includes(value)) {
+                                ajaxData.partnerType.push(value);
+                            }
+                        }
+                    });
+
+                    selectItems.each(function (is, el) {
+                        if ($(el).children('.checkbox').hasClass('checked')) {
+                            const value = $(el).children('.checkbox').data('value');
+                            if (!ajaxData.paymentType.includes(value)) {
+                                ajaxData.paymentType.push(value);
+                            }
+                        }
+                    });
+
+                    selectHead.parent().removeClass('is-opened');
+
+                    $.ajax({
+                        url: ajax_object.ajax_url,
+                        type: 'POST',
+                        data: {
+                            action: 'partners_filter',
+                            partnerName: ajaxData.partnerName,
+                            partnerType: JSON.stringify(ajaxData.partnerType),
+                            paymentType: JSON.stringify(ajaxData.paymentType)
+                        },
+                        success: function(response) {
+                            $('.partners__container').html(response.html);
+                        },
+                        error: function (e) {
+                            console.log('error', e);
+                        },
+                    });
                 });
             })
 
@@ -38,6 +83,50 @@ jQuery(function ($) {
                         selectItems.find(`[data-value='all']`).removeClass('checked');
                     }
                     $(this).find('.checkbox').toggleClass('checked');
+
+                    // Clear previous values to avoid duplicates
+                    ajaxData.partnerType = [];
+                    ajaxData.paymentType = [];
+
+                    if (partnerName) {
+                        ajaxData.partnerName = partnerName;
+                    }
+
+                    checkboxItems.each(function (is, el) {
+                        if ($(el).children('.checkbox').hasClass('checked')) {
+                            const value = $(el).children('.checkbox').data('value');
+                            if (!ajaxData.partnerType.includes(value)) {
+                                ajaxData.partnerType.push(value);
+                            }
+                        }
+                    });
+
+                    selectItems.each(function (is, el) {
+                        if ($(el).children('.checkbox').hasClass('checked')) {
+                            const value = $(el).children('.checkbox').data('value');
+                            if (!ajaxData.paymentType.includes(value)) {
+                                ajaxData.paymentType.push(value);
+                            }
+                        }
+                    });
+
+
+                    $.ajax({
+                        url: ajax_object.ajax_url,
+                        type: 'POST',
+                        data: {
+                            action: 'partners_filter',
+                            partnerName: ajaxData.partnerName,
+                            partnerType: JSON.stringify(ajaxData.partnerType),
+                            paymentType: JSON.stringify(ajaxData.paymentType)
+                        },
+                        success: function(response) {
+                            $('.partners__container').html(response.html);
+                        },
+                        error: function (e) {
+                            console.log('error', e);
+                        },
+                    });
 
                 });
             })
