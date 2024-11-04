@@ -52,6 +52,7 @@ jQuery(function ($) {
                     $.ajax({
                         url: ajax_object.ajax_url,
                         type: 'POST',
+                        enctype: 'multipart/form-data',
                         data: {
                             action: 'partners_filter',
                             partnerName: ajaxData.partnerName,
@@ -115,6 +116,7 @@ jQuery(function ($) {
                     $.ajax({
                         url: ajax_object.ajax_url,
                         type: 'POST',
+                        enctype: 'multipart/form-data',
                         data: {
                             action: 'partners_filter',
                             partnerName: ajaxData.partnerName,
@@ -175,6 +177,7 @@ jQuery(function ($) {
                 $.ajax({
                     url: ajax_object.ajax_url,
                     type: 'POST',
+                    enctype: 'multipart/form-data',
                     data: {
                         action: 'partners_filter',
                         partnerName: ajaxData.partnerName,

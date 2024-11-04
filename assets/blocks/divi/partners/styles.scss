@@ -316,9 +316,10 @@
         background-color: $blue;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-        padding: 17px 1.25rem;
+        padding: 15px 1.25rem;
         line-height: 1;
         transition: 0.2s;
+        border: 2px solid $blue;
 
         &:hover {
           text-shadow: 1px 1px 2px $green;
