@@ -55,7 +55,7 @@ $partners = new WP_Query($query_args);
     <div class="partners__filter">
         <div class="checkbox-filter">
             <?php foreach ($partner_type_terms as  $item) : ?>
-                <div class="checkbox-item">
+                <a class="checkbox-item">
                     <div class="checkbox checked" data-value="<?php echo $item->slug; ?>">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <g >
@@ -66,7 +66,7 @@ $partners = new WP_Query($query_args);
                         </svg>
                     </div>
                     <span><?php echo $item->name; ?></span>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
 
@@ -74,7 +74,7 @@ $partners = new WP_Query($query_args);
             <div class="select-block--head">
                 <span class="select-placeholder"><?php _e("Select category", 'accutitle') ?></span>
             <div class="select-block--categories">
-                <div class="checkbox-item">
+                <a class="checkbox-item">
                     <div class="checkbox" data-value="<?php echo _e('all', 'accutitle'); ?>">
                         <svg width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <g >
@@ -85,9 +85,9 @@ $partners = new WP_Query($query_args);
                         </svg>
                     </div>
                     <span><?php echo _e('Select all', 'accutitle'); ?></span>
-                </div>
+                </a>
                 <?php foreach ($payment_type_terms as  $item) : ?>
-                    <div class="checkbox-item">
+                    <a class="checkbox-item">
                         <div class="checkbox checked" data-value="<?php echo $item->slug; ?>">
                             <svg width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <g >
@@ -98,7 +98,7 @@ $partners = new WP_Query($query_args);
                             </svg>
                         </div>
                         <span><?php echo $item->name; ?></span>
-                    </div>
+                    </a>
                 <?php endforeach; ?>
             </div>
             </div>

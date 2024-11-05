@@ -1,6 +1,7 @@
 jQuery(function ($) {
     $(document).ready(function () {
         if ($('#partners').length) {
+            console.log('test changes');
 
             const ajaxData = {
                 partnerName: '',
@@ -18,8 +19,11 @@ jQuery(function ($) {
 
             // Checkbox block handler
             checkboxItems.each((id, el) => {
-                $(el).on(eventClick, function () {
+                $(el).on(eventClick, function (e) {
+                    e.preventDefault();
                     $(this).find('.checkbox').toggleClass('checked');
+
+                    console.log('checkbox onclick event', e);
 
                     // Clear previous values to avoid duplicates
                     ajaxData.partnerType = [];
@@ -47,7 +51,6 @@ jQuery(function ($) {
                         }
                     });
 
-                    selectHead.parent().removeClass('is-opened');
 
                     $.ajax({
                         url: ajax_object.ajax_url,
@@ -76,7 +79,8 @@ jQuery(function ($) {
 
             // Select block handler
             selectItems.each((id, el) => {
-                $(el).on(eventClick, function () {
+                $(el).on(eventClick, function (e) {
+                    e.preventDefault();
                     if ($(this).find('.checkbox').data('value') === 'all') {
                         selectItems.find('.checkbox').removeClass('checked');
                         $(this).find('.checkbox').toggleClass('checked');
@@ -85,6 +89,8 @@ jQuery(function ($) {
                         selectItems.find(`[data-value='all']`).removeClass('checked');
                     }
                     $(this).find('.checkbox').toggleClass('checked');
+
+                    console.log('select onclick event', e);
 
                     // Clear previous values to avoid duplicates
                     ajaxData.partnerType = [];
@@ -111,7 +117,6 @@ jQuery(function ($) {
                             }
                         }
                     });
-
 
                     $.ajax({
                         url: ajax_object.ajax_url,

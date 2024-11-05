@@ -43,6 +43,8 @@
         align-items: flex-start;
         width: 30%;
         cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
 
         @media (max-width: 600px) {
           width: 50%;
@@ -239,6 +241,8 @@
           display: flex;
           margin-bottom: 10px;
           cursor: pointer;
+          pointer-events: auto;
+          touch-action: manipulation;
 
           &:hover {
             span {
