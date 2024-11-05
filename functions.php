@@ -73,9 +73,9 @@ function partners_filter() {
     ];
 
     if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) {
-        $query_args['tax_query'] = ['relation' => 'AND'];
-    } elseif (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs))  {
         $query_args['tax_query'] = ['relation' => 'OR'];
+    } elseif (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs))  {
+        $query_args['tax_query'] = ['relation' => 'AND'];
     }
     if ($partnerName !== '') {
         $query_args['s'] = $partnerName;
