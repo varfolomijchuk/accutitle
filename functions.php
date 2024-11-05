@@ -68,9 +68,9 @@ function partners_filter() {
     if ((!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) || $partnerName) {
         $query_args = [
             'post_type' => 'partners',
-            'orderby' => 'date',
+            'orderby' => 'title',
+            'order' => 'ASC',
             'posts_per_page' => -1,
-            'order' => 'DESC',
         ];
     }
 

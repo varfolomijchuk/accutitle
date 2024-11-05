@@ -28,22 +28,9 @@ if ( ! empty( $partner_type_terms ) && ! is_wp_error( $partner_type_terms ) ) {
 
 $query_args = [
     'post_type' => 'partners',
-    'orderby' => 'date',
-    'order' => 'DESC',
+    'orderby' => 'title',
+    'order' => 'ASC',
     'posts_per_page' => -1,
-//    'tax_query' => [
-//        'relation' => 'AND',
-//        [
-//            'taxonomy' => 'payment-type',
-//            'field'    => 'slug',
-//            'terms'    => $payment_type_terms_slugs,
-//        ],
-//        [
-//            'taxonomy' => 'partner-type',
-//            'field'    => 'slug',
-//            'terms'    => $partner_type_terms_slugs,
-//        ],
-//    ]
 ];
 $partners = new WP_Query($query_args);
 ?>
