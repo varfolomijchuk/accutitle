@@ -1,7 +1,6 @@
 jQuery(function ($) {
     $(document).ready(function () {
         if ($('#partners').length) {
-            console.log('test changes');
 
             const ajaxData = {
                 partnerName: '',
@@ -22,8 +21,6 @@ jQuery(function ($) {
                 $(el).on(eventClick, function (e) {
                     e.preventDefault();
                     $(this).find('.checkbox').toggleClass('checked');
-
-                    console.log('checkbox onclick event', e);
 
                     // Clear previous values to avoid duplicates
                     ajaxData.partnerType = [];
@@ -89,8 +86,6 @@ jQuery(function ($) {
                         selectItems.find(`[data-value='all']`).removeClass('checked');
                     }
                     $(this).find('.checkbox').toggleClass('checked');
-
-                    console.log('select onclick event', e);
 
                     // Clear previous values to avoid duplicates
                     ajaxData.partnerType = [];
