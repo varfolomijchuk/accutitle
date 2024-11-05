@@ -65,7 +65,7 @@ function partners_filter() {
     $partner_type_terms_slugs = isset($_POST['partnerType']) ? json_decode(stripslashes($_POST['partnerType']), true) : [];
     $payment_type_terms_slugs = isset($_POST['paymentType']) ? json_decode(stripslashes($_POST['paymentType']), true) : [];
 
-    if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs) && $partnerName === '') {
+    if (empty($partner_type_terms_slugs) && empty($payment_type_terms_slugs) && $partnerName === '') {
         $query_args = [
             'post_type' => 'partners',
             'orderby' => 'date',
