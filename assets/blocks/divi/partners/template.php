@@ -31,19 +31,6 @@ $query_args = [
     'orderby' => 'date',
     'order' => 'DESC',
     'posts_per_page' => -1,
-    'tax_query' => [
-        'relation' => 'AND',
-        [
-            'taxonomy' => 'payment-type',
-            'field'    => 'slug',
-            'terms'    => $payment_type_terms_slugs,
-        ],
-        [
-            'taxonomy' => 'partner-type',
-            'field'    => 'slug',
-            'terms'    => $partner_type_terms_slugs,
-        ],
-    ]
 ];
 $partners = new WP_Query($query_args);
 ?>
