@@ -69,12 +69,14 @@ function partners_filter() {
         $query_args = [
             'post_type' => 'partners',
             'orderby' => 'date',
-            'posts_per_page' => -1,
+            'posts_per_page' => 2,
             'order' => 'DESC',
         ];
     }
     if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) {
         $query_args['tax_query'] = ['relation' => 'AND'];
+    } elseif (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs))  {
+        $query_args['tax_query'] = ['relation' => 'OR'];
     }
     if ($partnerName !== '') {
         $query_args['s'] = $partnerName;
