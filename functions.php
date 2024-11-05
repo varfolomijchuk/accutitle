@@ -73,10 +73,8 @@ function partners_filter() {
             'order' => 'DESC',
         ];
     }
-    if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) {
+    if (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs)) {
         $query_args['tax_query'] = ['relation' => 'AND'];
-    } elseif (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs)) {
-        $query_args['tax_query'] = ['relation' => 'OR'];
     }
     if ($partnerName !== '') {
         $query_args['s'] = $partnerName;
