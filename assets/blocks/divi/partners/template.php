@@ -32,7 +32,7 @@ $query_args = [
     'order' => 'DESC',
     'posts_per_page' => -1,
     'tax_query' => [
-        'relation' => 'AND',
+        'relation' => 'OR',
         [
             'taxonomy' => 'payment-type',
             'field'    => 'slug',
