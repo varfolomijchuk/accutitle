@@ -21,7 +21,7 @@ foreach ($postTypesDir as $fileinfo) {
 }
 function theme_files() {
     wp_enqueue_script('main-js', get_theme_file_uri('/dist/index.js'), ['jquery'], time(), true);
-    wp_enqueue_style('main-css', get_theme_file_uri('dist/style.css'), [], time(), 'all');
+    wp_enqueue_style('main-css', get_theme_file_uri('dist/style.css'), [], '1.0', 'all');
 
     wp_localize_script(
         'main-js',
@@ -65,12 +65,14 @@ function partners_filter() {
     $partner_type_terms_slugs = isset($_POST['partnerType']) ? json_decode(stripslashes($_POST['partnerType']), true) : [];
     $payment_type_terms_slugs = isset($_POST['paymentType']) ? json_decode(stripslashes($_POST['paymentType']), true) : [];
 
-    $query_args = [
-        'post_type' => 'partners',
-        'orderby' => 'date',
-        'posts_per_page' => -1,
-        'order' => 'DESC',
-    ];
+    if ((!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) || $partnerName) {
+        $query_args = [
+            'post_type' => 'partners',
+            'orderby' => 'date',
+            'posts_per_page' => -1,
+            'order' => 'DESC',
+        ];
+    }
 
     if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) {
         $query_args['tax_query'] = ['relation' => 'OR'];
