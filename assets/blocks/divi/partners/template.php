@@ -43,7 +43,7 @@ $partners = new WP_Query($query_args);
         <div class="checkbox-filter">
             <?php foreach ($partner_type_terms as  $item) : ?>
                 <a class="checkbox-item">
-                    <div class="checkbox checked" data-value="<?php echo $item->slug; ?>">
+                    <div class="checkbox" data-value="<?php echo $item->slug; ?>">
                         <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <g >
                                 <g>
@@ -75,7 +75,7 @@ $partners = new WP_Query($query_args);
                 </a>
                 <?php foreach ($payment_type_terms as  $item) : ?>
                     <a class="checkbox-item">
-                        <div class="checkbox checked" data-value="<?php echo $item->slug; ?>">
+                        <div class="checkbox" data-value="<?php echo $item->slug; ?>">
                             <svg width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <g >
                                     <g>

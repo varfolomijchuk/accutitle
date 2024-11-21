@@ -41,10 +41,6 @@ class ExampleBlock extends \ET_Builder_Module
      *                                             on which it depends has a value equal to this.
      * @type string $depends_show_if_not Optional. Only show this setting when the settings
      *                                             on which it depends has a value that is not equal to this.
-     *         ...
-     *     }
-     *     ...
-     * }
      */
     public function get_fields()
     {

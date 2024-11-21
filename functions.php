@@ -65,20 +65,17 @@ function partners_filter() {
     $partner_type_terms_slugs = isset($_POST['partnerType']) ? json_decode(stripslashes($_POST['partnerType']), true) : [];
     $payment_type_terms_slugs = isset($_POST['paymentType']) ? json_decode(stripslashes($_POST['paymentType']), true) : [];
 
-    if ((!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) || $partnerName) {
-        $query_args = [
-            'post_type' => 'partners',
-            'orderby' => 'title',
-            'order' => 'ASC',
-            'posts_per_page' => -1,
-        ];
-    }
+    $query_args = [
+        'post_type' => 'partners',
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'posts_per_page' => -1,
+    ];
 
     if (!empty($partner_type_terms_slugs) && !empty($payment_type_terms_slugs)) {
         $query_args['tax_query'] = ['relation' => 'OR'];
-    } elseif (!empty($partner_type_terms_slugs) || !empty($payment_type_terms_slugs))  {
-        $query_args['tax_query'] = ['relation' => 'AND'];
     }
+
     if ($partnerName !== '') {
         $query_args['s'] = $partnerName;
     }
